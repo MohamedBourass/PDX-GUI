@@ -32,24 +32,24 @@ public class Main extends Application {
 			grid.setVgap(10);
 			grid.setPadding(new Insets(25, 25, 25, 25));
 			
-			Text scenetitle = new Text("Welcome");
+			Text scenetitle = new Text("PDX");
 			scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 			scenetitle.setId("welcome-text");
 			grid.add(scenetitle, 0, 0, 2, 1);
 
-			Label userName = new Label("User Name:");
+			Label userName = new Label("Firstname:");
 			grid.add(userName, 0, 1);
 
 			TextField userTextField = new TextField();
 			grid.add(userTextField, 1, 1);
 
-			Label pw = new Label("Password:");
+			Label pw = new Label("Lastname:");
 			grid.add(pw, 0, 2);
 
 			PasswordField pwBox = new PasswordField();
 			grid.add(pwBox, 1, 2);
 			
-			Button btn = new Button("Sign in");
+			Button btn = new Button("Save");
 			HBox hbBtn = new HBox(10);
 			hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 			hbBtn.getChildren().add(btn);
@@ -58,28 +58,19 @@ public class Main extends Application {
 			final Text actiontarget = new Text();
 	        grid.add(actiontarget, 1, 6);
 	        
-	        
-	        //btn.setOnAction(value);
-	        
-	        
 	        btn.setOnAction(new EventHandler<ActionEvent>() {
-
 				@Override
 				public void handle(ActionEvent e) {
 	                actiontarget.setFill(Color.FIREBRICK);
-	                actiontarget.setText("Sign in button pressed");
+	                actiontarget.setText("Submitting...");
 					
 				}
-	        	 
-
 	        });
-			
-	        
-			
-			Scene scene = new Scene(grid,400,400);
+			        
+			Scene scene = new Scene(grid,400,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("JavaFX Welcome");
+			primaryStage.setTitle("PDX - Personal Data eXchange");
 			primaryStage.show();
 			
 		} catch(Exception e) {

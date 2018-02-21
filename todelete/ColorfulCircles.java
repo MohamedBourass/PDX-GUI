@@ -20,9 +20,9 @@ import javafx.util.Duration;
 
 public class ColorfulCircles {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);
-    }
+    }*/
     
     public void start(Stage primaryStage) {
         Group root = new Group();
@@ -55,7 +55,7 @@ public class ColorfulCircles {
         root.getChildren().add(blendModeGroup);      
         circles.setEffect(new BoxBlur(10, 10, 3));
         Timeline timeline = new Timeline();
-        for (Node circle : circles.getChildren()) {
+        /*for (Node circle : circles.getChildren()) {
             timeline.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, // set start position at 0
                     new KeyValue(circle.translateXProperty(), random() * 800),
@@ -63,7 +63,7 @@ public class ColorfulCircles {
                     new KeyFrame(new Duration(40000), // set end position at 40s
                     new KeyValue(circle.translateXProperty(), random() * 800),
                     new KeyValue(circle.translateYProperty(), random() * 600)));
-        }
+        }*/
         // play 40s of animation
         timeline.play();
         primaryStage.show();
