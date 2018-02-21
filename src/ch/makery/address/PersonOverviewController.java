@@ -117,4 +117,59 @@ public class PersonOverviewController {
       int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
       personTable.getItems().remove(selectedIndex);
     }
+    
+    /**
+     * Called when the user clicks the new button.
+     * Opens a dialog to edit details for a new person.
+     */
+    @FXML
+    private void handleNewPerson() {
+      Person tempPerson = new Person();
+      boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+      if (okClicked) {
+        mainApp.getPersonData().add(tempPerson);
+      }
+    }
+
+    /**
+     * Called when the user clicks the edit button.
+     * Opens a dialog to edit details for the selected person.
+     */
+    @FXML
+    private void handleEditPerson() {
+      Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+      if (selectedPerson != null) {
+        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+        if (okClicked) {
+          refreshPersonTable();
+          showPersonDetails(selectedPerson);
+        }
+
+      } else {
+        // Nothing selected
+//        Dialogs.showWarningDialog(mainApp.getPrimaryStage(),
+//            "Please select a person in the table.",
+//            "No Person Selected", "No Selection");
+        
+        System.out.println(mainApp.getPrimaryStage() + "No Person selected..");
+      }
+    }
+
+    /**
+     * Refreshes the table. This is only necessary if an item that is already in
+     * the table is changed. New and deleted items are refreshed automatically.
+     * 
+     * This is a workaround because otherwise we would need to use property
+     * bindings in the model class and add a *property() method for each
+     * property. Maybe this will not be necessary in future versions of JavaFX
+     * (see http://javafx-jira.kenai.com/browse/RT-22599)
+     */
+    private void refreshPersonTable() {
+      int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+      personTable.setItems(null);
+      personTable.layout();
+      personTable.setItems(mainApp.getPersonData());
+      // Must set the selected index again (see http://javafx-jira.kenai.com/browse/RT-26291)
+      personTable.getSelectionModel().select(selectedIndex);
+    }
 }
