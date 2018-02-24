@@ -1,22 +1,16 @@
 package com.personaldata;
 
 import com.personaldata.model.Person;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class PersonOverviewController {
-    @FXML
-    private TableView<Person> personTable;
-    @FXML
-    private TableColumn<Person, String> firstNameColumn;
-    @FXML
-    private TableColumn<Person, String> lastNameColumn;
+    //@FXML
+    //private TableView<Person> personTable;
+    //@FXML
+    //private TableColumn<Person, String> firstNameColumn;
+    //@FXML
+    //private TableColumn<Person, String> lastNameColumn;
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -60,23 +54,23 @@ public class PersonOverviewController {
     @FXML
     private void initialize() {
       // Initialize the person table
-      firstNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
-      lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
-      // Auto resize columns
-      personTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//      firstNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
+//      lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
+//      // Auto resize columns
+//      personTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
       // clear person
       showPersonDetails(null);
 
       // Listen for selection changes
-      personTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
-
-        @Override
-        public void changed(ObservableValue<? extends Person> observable,
-            Person oldValue, Person newValue) {
-          showPersonDetails(newValue);
-        }
-      });
+//      personTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
+//
+//        @Override
+//        public void changed(ObservableValue<? extends Person> observable,
+//            Person oldValue, Person newValue) {
+//          showPersonDetails(newValue);
+//        }
+//      });
     }
     
     
@@ -90,7 +84,7 @@ public class PersonOverviewController {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        personTable.setItems(mainApp.getPersonData());
+        //personTable.setItems(mainApp.getPersonData());
     }
     
     /**
@@ -135,8 +129,8 @@ public class PersonOverviewController {
      */
     @FXML
     private void handleDeletePerson() {
-      int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-      personTable.getItems().remove(selectedIndex);
+//      int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+//      personTable.getItems().remove(selectedIndex);
     }
     
     /**
@@ -158,7 +152,8 @@ public class PersonOverviewController {
      */
     @FXML
     private void handleEditPerson() {
-      Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+      //Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+      Person selectedPerson = new Person();
       if (selectedPerson != null) {
         boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
         if (okClicked) {
@@ -186,11 +181,11 @@ public class PersonOverviewController {
      * (see http://javafx-jira.kenai.com/browse/RT-22599)
      */
     private void refreshPersonTable() {
-      int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-      personTable.setItems(null);
-      personTable.layout();
-      personTable.setItems(mainApp.getPersonData());
-      // Must set the selected index again (see http://javafx-jira.kenai.com/browse/RT-26291)
-      personTable.getSelectionModel().select(selectedIndex);
+//      int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+//      personTable.setItems(null);
+//      personTable.layout();
+//      personTable.setItems(mainApp.getPersonData());
+//      // Must set the selected index again (see http://javafx-jira.kenai.com/browse/RT-26291)
+//      personTable.getSelectionModel().select(selectedIndex);
     }
 }
