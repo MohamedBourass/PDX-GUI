@@ -1,10 +1,11 @@
-package ch.makery.address;
+package com.personaldata;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ch.makery.address.model.Person;
-import ch.makery.address.util.CalendarUtil;
+
+import com.personaldata.model.Person;
+import com.personaldata.util.CalendarUtil;
 
 /**
  * Dialog to edit details of a person.

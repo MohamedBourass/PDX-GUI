@@ -1,4 +1,4 @@
-package ch.makery.address.model;
+package com.personaldata.model;
 
 import java.util.Calendar;
 

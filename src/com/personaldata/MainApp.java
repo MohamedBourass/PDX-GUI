@@ -1,14 +1,14 @@
-package ch.makery.address;
+package com.personaldata;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
+import com.personaldata.model.Person;
+import com.personaldata.util.FileUtil;
 import com.thoughtworks.xstream.XStream;
 
-import ch.makery.address.model.Person;
-import ch.makery.address.util.FileUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

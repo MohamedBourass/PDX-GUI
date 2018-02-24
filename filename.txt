@@ -1,0 +1,5 @@
+{"ch.makery.address.model.Person": {
+  "firstName": "Mohamed",
+  "lastName": "Bourass",
+  "postalCode": 0
+}}

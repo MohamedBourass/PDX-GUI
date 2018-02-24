@@ -1,4 +1,4 @@
-package ch.makery.address;
+package com.personaldata;
 
 import java.io.File;
 

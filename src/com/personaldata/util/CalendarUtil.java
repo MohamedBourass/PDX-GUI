@@ -1,4 +1,4 @@
-package ch.makery.address.util;
+package com.personaldata.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

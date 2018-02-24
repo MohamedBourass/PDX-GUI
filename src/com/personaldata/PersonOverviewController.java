@@ -1,6 +1,7 @@
-package ch.makery.address;
+package com.personaldata;
 
-import ch.makery.address.model.Person;
+import com.personaldata.model.Person;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
