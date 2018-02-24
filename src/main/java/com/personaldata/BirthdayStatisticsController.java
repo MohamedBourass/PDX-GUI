@@ -2,7 +2,6 @@ package com.personaldata;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,8 +50,8 @@ public class BirthdayStatisticsController {
     public void setPersonData(List<Person> persons) {
         int[] monthCounter = new int[12];
         for (Person p : persons) {
-            int month = p.getBirthday().get(Calendar.MONTH);
-            monthCounter[month]++;
+       //     int month = p.getBirthday().get(Calendar.MONTH);
+       //     monthCounter[month]++;
         }
 
         XYChart.Series<String, Integer> series = createMonthDataSeries(monthCounter);

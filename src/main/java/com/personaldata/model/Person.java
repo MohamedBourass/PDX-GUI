@@ -1,42 +1,22 @@
 package com.personaldata.model;
 
-import java.util.Calendar;
-
 /**
  * Model class for a Person.
  *
- * @author Marco Jakob
+ * @author Mohamed Bourass
  */
 public class Person {
-
+	
     private String firstName;
     private String lastName;
-    private String street;
-    private int postalCode;
-    private String city;
-    private Calendar birthday;
-
-    /**
-     * Default constructor.
-     */
+    
+    private String postalAddress;
+    private String phoneNumber;
+    private String email;
+    private String ipAddress;
+    private String macAddress;
+    
     public Person() {
-    }
-
-    /**
-     * Constructor with some initial data.
-     * 
-     * @param firstName
-     * @param lastName
-     */
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-        // some initial dummy data
-        this.street = "some street";
-        this.postalCode = 1234;
-        this.city = "some city";
-        this.birthday = Calendar.getInstance();
     }
 
     public String getFirstName() {
@@ -55,35 +35,44 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getStreet() {
-        return street;
-    }
+	public String getPostalAddress() {
+		return postalAddress;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
+	}
 
-    public int getPostalCode() {
-        return postalCode;
-    }
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-    public void setPostalCode(int postalCode) {
-        this.postalCode = postalCode;
-    }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Calendar getBirthday() {
-        return birthday;
-    }
+	public String getIpAddress() {
+		return ipAddress;
+	}
 
-    public void setBirthday(Calendar birthday) {
-        this.birthday = birthday;
-    }
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
+	public String getMacAddress() {
+		return macAddress;
+	}
+
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
+	}
+
 }

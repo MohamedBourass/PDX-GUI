@@ -17,19 +17,31 @@ public class PersonOverviewController {
     private TableColumn<Person, String> firstNameColumn;
     @FXML
     private TableColumn<Person, String> lastNameColumn;
-
     @FXML
     private Label firstNameLabel;
     @FXML
     private Label lastNameLabel;
     @FXML
-    private Label streetLabel;
+    private Label postalAddressLabel;
     @FXML
-    private Label postalCodeLabel;
+    private Label phoneNumberLabel;
     @FXML
-    private Label cityLabel;
+    private Label emailLabel;
     @FXML
-    private Label birthdayLabel;
+    private Label ipAddressLabel;
+    @FXML
+    private Label macAddressLabel;
+
+    
+    
+//    @FXML
+//    private Label streetLabel;
+//    @FXML
+//    private Label postalCodeLabel;
+//    @FXML
+//    private Label cityLabel;
+//    @FXML
+//    private Label birthdayLabel;
 
     // Reference to the main application
     private MainApp mainApp;
@@ -94,10 +106,18 @@ public class PersonOverviewController {
 	    	if(null != person) {
 	    		firstNameLabel.setText(person.getFirstName());
 	    		lastNameLabel.setText(person.getLastName());
-	    		streetLabel.setText(person.getStreet());
-	    		postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
-	    	    cityLabel.setText(person.getCity());
-	    	    birthdayLabel.setText(person.getBirthday().toString());
+	    	    postalAddressLabel.setText(person.getPostalAddress());
+	    	    phoneNumberLabel.setText(person.getPhoneNumber());
+	    	    emailLabel.setText(person.getEmail());
+	    	    ipAddressLabel.setText(person.getIpAddress());
+	    	    macAddressLabel.setText(person.getMacAddress());
+	    		
+//	    		streetLabel.setText(person.getStreet());
+//	    		postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
+//	    	    cityLabel.setText(person.getCity());
+//	    	    birthdayLabel.setText(person.getBirthday().toString());
+	    	    
+	    	    
 	    	} /*else {
 	    		firstNameLabel.setText("");
 	    		lastNameLabel.setText("");
