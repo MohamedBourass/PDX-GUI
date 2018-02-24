@@ -6,13 +6,16 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import org.junit.Test;
+
 import com.personaldata.model.Person;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 
-public class Main {
+public class PersonTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void objectToJsonTest() {
 
 		Person me = new Person();
 		me.setFirstName("Mohamed");
@@ -26,7 +29,7 @@ public class Main {
 
 		try {
 		    writer = new BufferedWriter(new OutputStreamWriter(
-		          new FileOutputStream("filename.txt"), "utf-8"));
+		          new FileOutputStream("src/test/java/com/personaldata/mbourass.json"), "utf-8"));
 		    writer.write(dataJson);
 		} catch (IOException ex) {
 		  // report

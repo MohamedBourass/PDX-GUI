@@ -1,4 +1,4 @@
-{"ch.makery.address.model.Person": {
+{"com.personaldata.model.Person": {
   "firstName": "Mohamed",
   "lastName": "Bourass",
   "postalCode": 0
