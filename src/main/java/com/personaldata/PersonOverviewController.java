@@ -1,8 +1,12 @@
 package com.personaldata;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 import com.personaldata.model.Person;
 import com.thoughtworks.xstream.XStream;
@@ -140,8 +144,6 @@ public class PersonOverviewController {
      */
     private void showPersonDetails(Person person) {
 
-    // use setText(...) on all labels with info from the person object
-    // use setText("") on all labels if the person is null
 	    	if(null != person) {
 	    		firstNameLabel.setText(person.getFirstName());
 	    		lastNameLabel.setText(person.getLastName());
@@ -149,7 +151,7 @@ public class PersonOverviewController {
 	    	    phoneNumberLabel.setText(person.getPhoneNumber());
 	    	    emailLabel.setText(person.getEmail());
 	    	    ipAddressLabel.setText(person.getIpAddress());
-	    	    //macAddressLabel.setText(person.getMacAddress());
+	    	    macAddressLabel.setText(person.getMacAddress());
 	    		
 //	    		streetLabel.setText(person.getStreet());
 //	    		postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
@@ -214,6 +216,25 @@ public class PersonOverviewController {
         
         System.out.println(mainApp.getPrimaryStage() + "No Person selected..");
       }
+    }
+    
+    private void handleSavePerson(Person person) {
+	
+	    	XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+	    	String dataJson = xstream.toXML(person);
+	    	//System.out.println(dataJson);
+	
+	    	Writer writer = null;
+	
+	    	try {
+	    		writer = new BufferedWriter(new OutputStreamWriter(
+	    				new FileOutputStream("src/main/resources/com/personaldata/mbourass.json"), "utf-8"));
+	    		writer.write(dataJson);
+	    	} catch (IOException ex) {
+	    		// report
+	    	} finally {
+	    		try {writer.close();} catch (Exception ex) {/*ignore*/}
+	    	}
     }
 
     /**

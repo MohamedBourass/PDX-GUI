@@ -1,5 +1,9 @@
 {"com.personaldata.model.Person": {
   "firstName": "Mohamed",
   "lastName": "Bourass",
-  "postalAddress": 0
+  "postalAddress": "1 avenue des cerisiers, 91800 Brunoy, FRANCE",
+  "phoneNumber": "+33678124401",
+  "email": "test@gmail.com",
+  "ipAddress": "172.16.254.1",
+  "macAddress": "5E:FF:56:A2:AF:15"
 }}
