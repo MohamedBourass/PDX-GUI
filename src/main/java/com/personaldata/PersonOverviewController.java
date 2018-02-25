@@ -1,6 +1,14 @@
 package com.personaldata;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import com.personaldata.model.Person;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -60,7 +68,44 @@ public class PersonOverviewController {
 //      personTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
       // clear person
-      showPersonDetails(null);
+    		XStream xstream = new XStream(new JettisonMappedXmlDriver());
+    		
+
+    		BufferedReader br = null;
+    		FileReader fr = null;
+    		String dataJson = "";
+    		
+    		try {
+
+    			//br = new BufferedReader(new FileReader(FILENAME));
+    			fr = new FileReader("src/main/resources/com/personaldata/mbourass.json");
+    			br = new BufferedReader(fr);
+
+    			String sCurrentLine;
+    			
+    			while ((sCurrentLine = br.readLine()) != null) {
+    				dataJson += sCurrentLine;
+    				System.out.println(sCurrentLine);
+    			}
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		} finally {
+    			try {
+    				if (br != null)
+    					br.close();
+
+    				if (fr != null)
+    					fr.close();
+
+    			} catch (IOException ex) {
+
+    				ex.printStackTrace();
+    			}
+    		}
+    		
+    		System.out.println("Toto => " + dataJson);
+    		Person customer = (Person) xstream.fromXML(dataJson);
+    		showPersonDetails(customer);
 
       // Listen for selection changes
 //      personTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
@@ -104,7 +149,7 @@ public class PersonOverviewController {
 	    	    phoneNumberLabel.setText(person.getPhoneNumber());
 	    	    emailLabel.setText(person.getEmail());
 	    	    ipAddressLabel.setText(person.getIpAddress());
-	    	    macAddressLabel.setText(person.getMacAddress());
+	    	    //macAddressLabel.setText(person.getMacAddress());
 	    		
 //	    		streetLabel.setText(person.getStreet());
 //	    		postalCodeLabel.setText(String.valueOf(person.getPostalCode()));

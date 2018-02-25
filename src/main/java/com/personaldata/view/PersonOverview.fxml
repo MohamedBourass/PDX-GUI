@@ -21,20 +21,21 @@
           <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="41.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="First Name" />
             <Label text="Last Name" GridPane.rowIndex="1" />
-            <Label text="Street" GridPane.rowIndex="2" />
-            <Label text="Postal Code" GridPane.rowIndex="3" />
+            <Label text="Postal Address" GridPane.rowIndex="2" />
+            <Label text="Phone Number" GridPane.rowIndex="3" />
             <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="streetLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="postalCodeLabel" prefHeight="14.0" prefWidth="34.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="City" GridPane.rowIndex="4" />
-            <Label fx:id="cityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Birthday" GridPane.rowIndex="5" />
+            <Label fx:id="postalAddressLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="phoneNumberLabel" prefHeight="14.0" prefWidth="34.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Email" GridPane.rowIndex="4" />
+            <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="ipAddressLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="IP Address" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutY="560.0" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
