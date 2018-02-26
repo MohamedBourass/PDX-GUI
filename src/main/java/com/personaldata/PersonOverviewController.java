@@ -107,7 +107,7 @@ public class PersonOverviewController {
     			}
     		}
     		
-    		System.out.println("Toto => " + dataJson);
+    		//System.out.println("Toto => " + dataJson);
     		Person customer = (Person) xstream.fromXML(dataJson);
     		showPersonDetails(customer);
 
@@ -184,20 +184,20 @@ public class PersonOverviewController {
      * Called when the user clicks the new button.
      * Opens a dialog to edit details for a new person.
      */
-    @FXML
+    /*@FXML
     private void handleNewPerson() {
       Person tempPerson = new Person();
       boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
       if (okClicked) {
         mainApp.getPersonData().add(tempPerson);
       }
-    }
+    }*/
 
     /**
      * Called when the user clicks the edit button.
      * Opens a dialog to edit details for the selected person.
      */
-    @FXML
+   /* @FXML
     private void handleEditPerson() {
       //Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
       Person selectedPerson = new Person();
@@ -216,7 +216,7 @@ public class PersonOverviewController {
         
         System.out.println(mainApp.getPrimaryStage() + "No Person selected..");
       }
-    }
+    }*/
     
     private void handleSavePerson(Person person) {
 	

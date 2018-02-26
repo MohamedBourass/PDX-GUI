@@ -4,7 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import com.personaldata.model.Person;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 /**
  * Dialog to edit details of a person.
@@ -49,6 +55,60 @@ public class PersonEditDialogController {
     @FXML
     private void initialize() {
 
+    }
+    
+    private MainApp mainApp;
+    
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+        // Add observable list data to the table
+        //personTable.setItems(mainApp.getPersonData());
+        
+		XStream xstream = new XStream(new JettisonMappedXmlDriver());
+		
+
+		BufferedReader br = null;
+		FileReader fr = null;
+		String dataJson = "";
+		
+		try {
+
+			//br = new BufferedReader(new FileReader(FILENAME));
+			fr = new FileReader("src/main/resources/com/personaldata/mbourass.json");
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+			
+			while ((sCurrentLine = br.readLine()) != null) {
+				dataJson += sCurrentLine;
+				System.out.println(sCurrentLine);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+			}
+		}
+		
+		//System.out.println("Toto => " + dataJson);
+		Person customer = (Person) xstream.fromXML(dataJson);
+		this.setPerson(customer);
+        
     }
 
     /**

@@ -67,7 +67,8 @@ public class MainApp extends Application {
         e.printStackTrace();
       }
 
-      showPersonOverview();
+      //showPersonOverview();
+      showPersonEdition();
 
       // Try to load last opened person file
       File file = getPersonFilePath();
@@ -80,16 +81,16 @@ public class MainApp extends Application {
         return primaryStage;
     }
 	
-    public void showPersonOverview() {
+    public void showPersonEdition() {
         try {
             // Load the fxml file and set into the center of the main layout
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane overviewPage = (AnchorPane) loader.load();
-            rootLayout.setCenter(overviewPage);
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+            AnchorPane editPage = (AnchorPane) loader.load();
+            rootLayout.setCenter(editPage);
             
 
             // Give the controller access to the main app
-            PersonOverviewController controller = loader.getController();
+            PersonEditDialogController controller = loader.getController();
             controller.setMainApp(this);
 
 
@@ -99,7 +100,7 @@ public class MainApp extends Application {
         }
     }
     
-    public boolean showPersonEditDialog(Person person) {
+    /*public boolean showPersonEditDialog(Person person) {
     	  try {
     	    // Load the fxml file and create a new stage for the popup
     	    FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PersonEditDialog.fxml"));
@@ -126,7 +127,7 @@ public class MainApp extends Application {
     	    e.printStackTrace();
     	    return false;
     	  }
-    	}
+    	}*/
 
 	public static void main(String[] args) {
 		launch(args);
