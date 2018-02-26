@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,7 +9,15 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personaldata.PersonEditDialogController">
   <children>
-    <GridPane alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="235.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="50.0">
+         <image>
+            <Image url="@../../../img/logo.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+    <GridPane alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0">
       <children>
         <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0">
                <GridPane.margin>
@@ -26,7 +35,7 @@
         <TextField fx:id="emailField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <TextField fx:id="ipAddressField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <TextField fx:id="macAddressField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextArea fx:id="postalAddressField" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />        
+            <TextArea fx:id="postalAddressField" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />        
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="80.0" prefWidth="120.0" />
