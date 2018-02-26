@@ -22,7 +22,7 @@ import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
  * Dialog to edit details of a person.
  * 
  */
-public class PersonEditDialogController {
+public class PrivateDataController {
 
     @FXML
     private TextField firstNameField;

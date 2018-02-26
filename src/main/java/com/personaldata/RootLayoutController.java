@@ -3,6 +3,7 @@ package com.personaldata;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 /**
@@ -15,6 +16,14 @@ public class RootLayoutController {
 
     // Reference to the main application
     private MainApp mainApp;
+    
+    //Reference to the 2 main anchor panes
+    @FXML
+    public AnchorPane treeviewPane;
+    
+    @FXML
+    public AnchorPane mainPane;
+    
 
     /**
      * Is called by the main application to give a reference back to itself.

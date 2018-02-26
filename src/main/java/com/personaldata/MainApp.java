@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -62,13 +63,26 @@ public class MainApp extends Application {
         controller.setMainApp(this);
 
         primaryStage.show();
-      } catch (IOException e) {
-        // Exception gets thrown if the fxml file could not be loaded
-        e.printStackTrace();
-      }
+        
+        //showPersonOverview();
+        //showPersonEdition();
 
-      //showPersonOverview();
-      showPersonEdition();
+
+        // Load the fxml file and set into the center of the main layout
+        FXMLLoader loader1 = new FXMLLoader(MainApp.class.getResource("view/PrivateData.fxml"));
+        AnchorPane editPage = (AnchorPane) loader1.load();
+        
+        //rootLayout.setCenter(editPage);
+        controller.mainPane.getChildren().add(editPage);
+
+        // Give the controller access to the main app
+        PrivateDataController controller1 = loader1.getController();
+        controller1.setMainApp(this);
+
+      } catch (IOException e) {
+          // Exception gets thrown if the fxml file could not be loaded
+          e.printStackTrace();
+      }
 
       // Try to load last opened person file
       File file = getPersonFilePath();
@@ -81,16 +95,29 @@ public class MainApp extends Application {
         return primaryStage;
     }
 	
-    public void showPersonEdition() {
+    /*public void showPersonEdition() {
         try {
             // Load the fxml file and set into the center of the main layout
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PrivateData.fxml"));
             AnchorPane editPage = (AnchorPane) loader.load();
-            rootLayout.setCenter(editPage);
+//            for(Node node : rootLayout.getChildren()) {
+//            	System.out.println("Titi => " + node.getId());
+//            }
             
+            //FXMLLoader loader1 = new FXMLLoader(MainApp.class.getResource("view/RootLayout.fxml"));
+            //RootLayoutController controller1 = loader1.getController();
+            //AnchorPane main = controller1.mainPane;
+            
+            // dmain.setLeftAnchor(editPage, 0.0);
+            
+            //ObservableList<Node> nodes = rootLayout.getChildren();
+            //nodes.remove(1);
+            //nodes.set(1, editPage);
+            //nodes.add(editPage);
+            rootLayout.setCenter(editPage);
 
             // Give the controller access to the main app
-            PersonEditDialogController controller = loader.getController();
+            PrivateDataController controller = loader.getController();
             controller.setMainApp(this);
 
 
@@ -98,12 +125,12 @@ public class MainApp extends Application {
             // Exception gets thrown if the fxml file could not be loaded
             e.printStackTrace();
         }
-    }
+    }*/
     
-    /*public boolean showPersonEditDialog(Person person) {
+    /*public boolean showPrivateData(Person person) {
     	  try {
     	    // Load the fxml file and create a new stage for the popup
-    	    FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+    	    FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/PrivateData.fxml"));
     	    AnchorPane page = (AnchorPane) loader.load();
     	    Stage dialogStage = new Stage();
     	    dialogStage.setTitle("Edit Person");
@@ -113,7 +140,7 @@ public class MainApp extends Application {
     	    dialogStage.setScene(scene);
 
     	    // Set the person into the controller
-    	    PersonEditDialogController controller = loader.getController();
+    	    PrivateDataController controller = loader.getController();
     	    controller.setDialogStage(dialogStage);
     	    controller.setPerson(person);
 

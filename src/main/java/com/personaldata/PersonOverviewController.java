@@ -176,7 +176,7 @@ public class PersonOverviewController {
     /*@FXML
     private void handleNewPerson() {
       Person tempPerson = new Person();
-      boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+      boolean okClicked = mainApp.showPrivateData(tempPerson);
       if (okClicked) {
         mainApp.getPersonData().add(tempPerson);
       }
@@ -191,7 +191,7 @@ public class PersonOverviewController {
       //Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
       Person selectedPerson = new Person();
       if (selectedPerson != null) {
-        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+        boolean okClicked = mainApp.showPrivateData(selectedPerson);
         if (okClicked) {
           refreshPersonTable();
           showPersonDetails(selectedPerson);

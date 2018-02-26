@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personaldata.PersonEditDialogController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personaldata.PrivateDataController">
   <children>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="235.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="50.0">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="278.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="54.0">
          <image>
             <Image url="@../../../img/logo.png" />
          </image>
@@ -19,16 +19,17 @@
       </ImageView>
     <GridPane alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0">
       <children>
-        <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Label text="First Name">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></Label>
-        <Label text="Last Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+               </GridPane.margin>
+            </Label>
+        <Label text="Last Name" GridPane.rowIndex="1" />
         <Label text="Postal Address" GridPane.rowIndex="2" />
         <Label text="Phone Number" GridPane.rowIndex="3" />
-        <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-        <Label text="IP Address" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-        <Label text="Mac Address" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Label text="Email" GridPane.rowIndex="4" />
+        <Label text="IP Address" GridPane.rowIndex="5" />
+        <Label text="Mac Address" GridPane.rowIndex="6" />
         <TextField fx:id="firstNameField" prefWidth="200.0" GridPane.columnIndex="1" />
         <TextField fx:id="lastNameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="phoneNumberField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
