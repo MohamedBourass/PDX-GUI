@@ -168,12 +168,18 @@ public class RootLayoutController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		TreeItem<String> root = new TreeItem<>("Root");
-		TreeItem<String> nodeA = new TreeItem<>("Private Data");
+		TreeItem<String> privateData = new TreeItem<>("Private Data");
+		
+		TreeItem<String> state = new TreeItem<>("State");
+		TreeItem<String> bankAccount = new TreeItem<>("Bank Accounts");
+		privateData.getChildren().addAll(state, bankAccount);
+		privateData.setExpanded(true);
+		
 		//nodeA.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
 		
-		TreeItem<String> nodeB = new TreeItem<>("Public Data");
+		TreeItem<String> publicData = new TreeItem<>("Public Data");
 		
-		root.getChildren().addAll(nodeA, nodeB);
+		root.getChildren().addAll(privateData, publicData);
 		treeview.setRoot(root);
 		treeview.getRoot().setExpanded(true);
 	}
