@@ -23,21 +23,22 @@ import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
  * 
  */
 public class PublicDataController {
-
+	
+	
     @FXML
-    private TextField firstNameField;
+    private TextField genderField;
     @FXML
-    private TextField lastNameField;
+    private TextField birthDateField;
     @FXML
-    private TextArea postalAddressField;
+    private TextField birthLocationField;
     @FXML
-    private TextField phoneNumberField;
+    private TextField nativeLanguageField;
     @FXML
-    private TextField emailField;
+    private TextField religionField;
     @FXML
-    private TextField ipAddressField;
+    private TextField iqField;
     @FXML
-    private TextField macAddressField;
+    private TextField heightField;
     
     private Stage dialogStage;
     private Person person;
@@ -120,14 +121,18 @@ public class PublicDataController {
      */
     public void setPerson(Person person) {
         this.person = person;
+        
 
-        firstNameField.setText(person.getPrivateData().getFirstName());
-        lastNameField.setText(person.getPrivateData().getLastName());
-        postalAddressField.setText(person.getPrivateData().getPostalAddress());
-        phoneNumberField.setText(person.getPrivateData().getPhoneNumber());
-        emailField.setText(person.getPrivateData().getEmail());
-        ipAddressField.setText(person.getPrivateData().getIpAddress());
-        macAddressField.setText(person.getPrivateData().getMacAddress());
+        genderField.setText(person.getPublicData().getGender());
+        birthDateField.setText(person.getPublicData().getBirthDate());
+        birthLocationField.setText(person.getPublicData().getBirthLocation());
+        nativeLanguageField.setText(person.getPublicData().getNativeLanguage());
+        religionField.setText(person.getPublicData().getReligion());
+        iqField.setText(person.getPublicData().getIQ());
+        heightField.setText(person.getPublicData().getHeight());
+        
+        
+        
 
 //        birthdayField.setText(CalendarUtil.format(person.getBirthday()));
 //        birthdayField.setPromptText("yyyy-mm-dd");
@@ -147,14 +152,24 @@ public class PublicDataController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.getPrivateData().setFirstName(firstNameField.getText());
-            person.getPrivateData().setLastName(lastNameField.getText());
-//            person.setBirthday(CalendarUtil.parse(birthdayField.getText()));
-            person.getPrivateData().setPostalAddress(postalAddressField.getText());
-            person.getPrivateData().setPhoneNumber(phoneNumberField.getText());
-            person.getPrivateData().setEmail(emailField.getText());
-            person.getPrivateData().setIpAddress(ipAddressField.getText());
-            person.getPrivateData().setMacAddress(macAddressField.getText());
+        	
+        	
+            genderField.setText(person.getPublicData().getGender());
+            birthDateField.setText(person.getPublicData().getBirthDate());
+            birthLocationField.setText(person.getPublicData().getBirthLocation());
+            nativeLanguageField.setText(person.getPublicData().getNativeLanguage());
+            religionField.setText(person.getPublicData().getReligion());
+            iqField.setText(person.getPublicData().getIQ());
+            heightField.setText(person.getPublicData().getHeight());
+        	
+        	
+            person.getPublicData().setGender(genderField.getText());
+            person.getPublicData().setBirthDate(birthDateField.getText());
+            person.getPublicData().setBirthLocation(birthLocationField.getText());
+            person.getPublicData().setNativeLanguage(nativeLanguageField.getText());
+            person.getPublicData().setReligion(religionField.getText());
+            person.getPublicData().setIQ(iqField.getText());
+            person.getPublicData().setHeight(heightField.getText());
 
             okClicked = true;
             
@@ -197,12 +212,12 @@ public class PublicDataController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
-            errorMessage += "No valid first name!\n"; 
-        }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
-            errorMessage += "No valid last name!\n"; 
-        }
+//        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+//            errorMessage += "No valid first name!\n"; 
+//        }
+//        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+//            errorMessage += "No valid last name!\n"; 
+//        }
         
 //        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
 //            errorMessage += "No valid postal code!\n"; 

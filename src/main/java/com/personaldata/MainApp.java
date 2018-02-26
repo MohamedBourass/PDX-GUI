@@ -1,24 +1,21 @@
 package com.personaldata;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
 import com.personaldata.model.Person;
-import com.personaldata.util.FileUtil;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -29,7 +26,7 @@ public class MainApp extends Application {
     /**
      * The data as an observable list of Persons.
      */
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    //private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     /**
      * Constructor
@@ -41,9 +38,9 @@ public class MainApp extends Application {
      * Returns the data as an observable list of Persons. 
      * @return
      */
-    public ObservableList<Person> getPersonData() {
+    /*public ObservableList<Person> getPersonData() {
         return personData;
-    }
+    }*/
     
     @Override
     public void start(Stage primaryStage) {
@@ -78,6 +75,7 @@ public class MainApp extends Application {
         // Give the controller access to the main app
         PrivateDataController controller1 = loader1.getController();
         controller1.setMainApp(this);
+        controller1.setPerson(loadPerson());
 
       } catch (IOException e) {
           // Exception gets thrown if the fxml file could not be loaded
@@ -85,11 +83,55 @@ public class MainApp extends Application {
       }
 
       // Try to load last opened person file
-      File file = getPersonFilePath();
+      /*File file = getPersonFilePath();
       if (file != null) {
         loadPersonDataFromFile(file);
-      }
+      }*/
     }
+    
+    public static Person loadPerson() {
+		XStream xstream = new XStream(new JettisonMappedXmlDriver());
+		
+
+		BufferedReader br = null;
+		FileReader fr = null;
+		String dataJson = "";
+		
+		try {
+
+			//br = new BufferedReader(new FileReader(FILENAME));
+			fr = new FileReader("src/main/resources/com/personaldata/mbourass.json");
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+			
+			while ((sCurrentLine = br.readLine()) != null) {
+				dataJson += sCurrentLine;
+				System.out.println(sCurrentLine);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+			}
+		}
+		
+		return (Person) xstream.fromXML(dataJson);
+		//this.setPerson(customer);
+    }
+    
+    
+    
+    
 	
     public Stage getPrimaryStage() {
         return primaryStage;
@@ -204,6 +246,7 @@ public class MainApp extends Application {
 	 * 
 	 * @param file
 	 */
+	/*
 	@SuppressWarnings("unchecked")
 	public void loadPersonDataFromFile(File file) {
 	  XStream xstream = new XStream();
@@ -227,11 +270,6 @@ public class MainApp extends Application {
 	  }
 	}
 
-	/**
-	 * Saves the current person data to the specified file.
-	 * 
-	 * @param file
-	 */
 	public void savePersonDataToFile(File file) {
 	  XStream xstream = new XStream();
 	  xstream.alias("person", Person.class);
@@ -253,9 +291,7 @@ public class MainApp extends Application {
 	  }
 	}
 	
-    /**
-     * Opens a dialog to show birthday statistics. 
-     */
+
     public void showBirthdayStatistics() {
       try {
         // Load the fxml file and create a new stage for the popup
@@ -278,5 +314,5 @@ public class MainApp extends Application {
         // Exception gets thrown if the fxml file could not be loaded
         e.printStackTrace();
       }
-    }
+    }*/
 }

@@ -1,10 +1,16 @@
 package com.personaldata;
 
-import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -12,7 +18,7 @@ import javafx.stage.FileChooser;
  * elements can be placed.
  * 
  */
-public class RootLayoutController {
+public class RootLayoutController implements Initializable {
 
     // Reference to the main application
     private MainApp mainApp;
@@ -23,6 +29,9 @@ public class RootLayoutController {
     
     @FXML
     public AnchorPane mainPane;
+    
+    @FXML
+    TreeView<String> treeview;
     
 
     /**
@@ -39,8 +48,8 @@ public class RootLayoutController {
      */
     @FXML
     private void handleNew() {
-        mainApp.getPersonData().clear();
-        mainApp.setPersonFilePath(null);
+        //mainApp.getPersonData().clear();
+        //mainApp.setPersonFilePath(null);
     }
 
     /**
@@ -48,7 +57,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleOpen() {
-        FileChooser fileChooser = new FileChooser();
+        /*FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -60,7 +69,7 @@ public class RootLayoutController {
 
         if (file != null) {
             mainApp.loadPersonDataFromFile(file);
-        }
+        }*/
     }
 
     /**
@@ -69,12 +78,12 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSave() {
-        File personFile = mainApp.getPersonFilePath();
+        /*File personFile = mainApp.getPersonFilePath();
         if (personFile != null) {
             mainApp.savePersonDataToFile(personFile);
         } else {
             handleSaveAs();
-        }
+        }*/
     }
 
     /**
@@ -82,7 +91,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSaveAs() {
-    FileChooser fileChooser = new FileChooser();
+    /*FileChooser fileChooser = new FileChooser();
 
     // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -98,7 +107,7 @@ public class RootLayoutController {
         file = new File(file.getPath() + ".xml");
       }
       mainApp.savePersonDataToFile(file);
-    }
+    }*/
     }
 
     /**
@@ -122,6 +131,50 @@ public class RootLayoutController {
      */
     @FXML
     private void handleShowBirthdayStatistics() {
-      mainApp.showBirthdayStatistics();
+      //mainApp.showBirthdayStatistics();
     }
+    
+    public void mouseClick(MouseEvent mouseEvent) throws IOException {
+    		TreeItem<String> item = treeview.getSelectionModel().getSelectedItem();
+    		System.out.println(item.getValue());
+    		if("Public Data".equals(item.getValue())) {
+    	        // Load the fxml file and set into the center of the main layout
+    	        FXMLLoader loader1 = new FXMLLoader(MainApp.class.getResource("view/PublicData.fxml"));
+    	        AnchorPane editPage = (AnchorPane) loader1.load();
+    	        
+    	        
+    	        PublicDataController controller = loader1.getController();
+    	        controller.setPerson(MainApp.loadPerson());
+    	        
+    	        //rootLayout.setCenter(editPage);
+    	        mainPane.getChildren().add(editPage);
+
+    		} else if("Private Data".equals(item.getValue())) {
+    	        // Load the fxml file and set into the center of the main layout
+    	        FXMLLoader loader1 = new FXMLLoader(MainApp.class.getResource("view/PrivateData.fxml"));
+    	        AnchorPane editPage = (AnchorPane) loader1.load();
+    	        
+    	        PrivateDataController controller = loader1.getController();
+    	        controller.setPerson(MainApp.loadPerson());
+    	        
+    	        //rootLayout.setCenter(editPage);
+    	        mainPane.getChildren().add(editPage);
+    	        
+    	        
+    		}
+    }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		TreeItem<String> root = new TreeItem<>("Root");
+		TreeItem<String> nodeA = new TreeItem<>("Private Data");
+		//nodeA.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
+		
+		TreeItem<String> nodeB = new TreeItem<>("Public Data");
+		
+		root.getChildren().addAll(nodeA, nodeB);
+		treeview.setRoot(root);
+		treeview.getRoot().setExpanded(true);
+	}
 }

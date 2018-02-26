@@ -34,11 +34,11 @@
       </MenuBar>
    </top>
    <left>
-      <SplitPane dividerPositions="0.2" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.25" BorderPane.alignment="CENTER">
          <items>
             <AnchorPane fx:id="treeviewPane" prefHeight="600.0" prefWidth="200.0">
                <children>
-                  <TreeView prefHeight="200.0" prefWidth="100.0" />
+                  <TreeView fx:id="treeview" onContextMenuRequested="#mouseClick" onMouseClicked="#mouseClick" prefHeight="600.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="600.0" />
