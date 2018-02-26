@@ -5,12 +5,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 import com.personaldata.model.Person;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 
 /**
  * Dialog to edit details of a person.
@@ -33,17 +38,6 @@ public class PersonEditDialogController {
     @FXML
     private TextField macAddressField;
     
-    
-//    @FXML
-//    private TextField streetField;
-//    @FXML
-//    private TextField postalCodeField;
-//    @FXML
-//    private TextField cityField;
-//    @FXML
-//    private TextField birthdayField;
-
-
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
@@ -105,7 +99,6 @@ public class PersonEditDialogController {
 			}
 		}
 		
-		//System.out.println("Toto => " + dataJson);
 		Person customer = (Person) xstream.fromXML(dataJson);
 		this.setPerson(customer);
         
@@ -115,9 +108,9 @@ public class PersonEditDialogController {
      * Sets the stage of this dialog.
      * @param dialogStage
      */
-    public void setDialogStage(Stage dialogStage) {
+    /*public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
-    }
+    }*/
 
     /**
      * Sets the person to be edited in the dialog.
@@ -135,11 +128,6 @@ public class PersonEditDialogController {
         ipAddressField.setText(person.getIpAddress());
         macAddressField.setText(person.getMacAddress());
 
-        
-        
-//        streetField.setText(person.getStreet());
-//        postalCodeField.setText(Integer.toString(person.getPostalCode()));
-//        cityField.setText(person.getCity());
 //        birthdayField.setText(CalendarUtil.format(person.getBirthday()));
 //        birthdayField.setPromptText("yyyy-mm-dd");
     }
@@ -160,11 +148,7 @@ public class PersonEditDialogController {
         if (isInputValid()) {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
-//            person.setStreet(streetField.getText());
-//            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-//            person.setCity(cityField.getText());
 //            person.setBirthday(CalendarUtil.parse(birthdayField.getText()));
-            
             person.setPostalAddress(postalAddressField.getText());
             person.setPhoneNumber(phoneNumberField.getText());
             person.setEmail(emailField.getText());
@@ -172,8 +156,33 @@ public class PersonEditDialogController {
             person.setMacAddress(macAddressField.getText());
 
             okClicked = true;
-            dialogStage.close();
+            
+            XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+            String dataJson = xstream.toXML(person);
+            //System.out.println(dataJson);
+
+            Writer writer = null;
+
+            try {
+	            	writer = new BufferedWriter(new OutputStreamWriter(
+	            			new FileOutputStream("src/main/resources/com/personaldata/mbourass.json"), "utf-8"));
+	            	writer.write(dataJson);
+            } catch (IOException ex) {
+	            	// report
+	            } finally {
+	            	try {writer.close();} catch (Exception ex) {/*ignore*/
+	            		
+	            	}
+            }
+            
+            
+            //dialogStage.close();
         }
+    }
+    
+    private void handleSave(Person person) {
+
+
     }
 
     /**
@@ -199,11 +208,6 @@ public class PersonEditDialogController {
             errorMessage += "No valid last name!\n"; 
         }
         
-        
-//        if (streetField.getText() == null || streetField.getText().length() == 0) {
-//            errorMessage += "No valid street!\n"; 
-//        }
-//
 //        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
 //            errorMessage += "No valid postal code!\n"; 
 //        } else {
@@ -213,10 +217,6 @@ public class PersonEditDialogController {
 //            } catch (NumberFormatException e) {
 //                errorMessage += "No valid postal code (must be an integer)!\n"; 
 //            }
-//        }
-//
-//        if (cityField.getText() == null || cityField.getText().length() == 0) {
-//            errorMessage += "No valid city!\n"; 
 //        }
 //
 //        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {

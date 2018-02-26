@@ -152,12 +152,6 @@ public class PersonOverviewController {
 	    	    emailLabel.setText(person.getEmail());
 	    	    ipAddressLabel.setText(person.getIpAddress());
 	    	    macAddressLabel.setText(person.getMacAddress());
-	    		
-//	    		streetLabel.setText(person.getStreet());
-//	    		postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
-//	    	    cityLabel.setText(person.getCity());
-//	    	    birthdayLabel.setText(person.getBirthday().toString());
-	    	    
 	    	    
 	    	} /*else {
 	    		firstNameLabel.setText("");
@@ -218,24 +212,6 @@ public class PersonOverviewController {
       }
     }*/
     
-    private void handleSavePerson(Person person) {
-	
-	    	XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-	    	String dataJson = xstream.toXML(person);
-	    	//System.out.println(dataJson);
-	
-	    	Writer writer = null;
-	
-	    	try {
-	    		writer = new BufferedWriter(new OutputStreamWriter(
-	    				new FileOutputStream("src/main/resources/com/personaldata/mbourass.json"), "utf-8"));
-	    		writer.write(dataJson);
-	    	} catch (IOException ex) {
-	    		// report
-	    	} finally {
-	    		try {writer.close();} catch (Exception ex) {/*ignore*/}
-	    	}
-    }
 
     /**
      * Refreshes the table. This is only necessary if an item that is already in

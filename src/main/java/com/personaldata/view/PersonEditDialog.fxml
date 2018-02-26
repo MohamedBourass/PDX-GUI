@@ -44,8 +44,7 @@
     </GridPane>
     <HBox id="HBox" alignment="CENTER" minWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
       <children>
-        <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="80.0" styleClass="." text="OK" />
-        <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="80.0" text="Cancel" />
+        <Button ellipsisString="" mnemonicParsing="false" onAction="#handleOk" styleClass="." text="Save" />
       </children>
     </HBox>
   </children>
