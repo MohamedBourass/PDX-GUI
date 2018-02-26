@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personaldata.PersonEditDialogController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personaldata.PersonEditDialogController">
   <children>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="235.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="50.0">
          <image>
