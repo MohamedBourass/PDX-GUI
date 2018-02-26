@@ -1,6 +1,7 @@
 package com.personaldata;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,7 +29,7 @@ public class PersonEditDialogController {
     @FXML
     private TextField lastNameField;
     @FXML
-    private TextField postalAddressField;
+    private TextArea postalAddressField;
     @FXML
     private TextField phoneNumberField;
     @FXML
