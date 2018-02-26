@@ -1,17 +1,12 @@
 package com.personaldata;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 
 import com.personaldata.model.Person;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -145,13 +140,13 @@ public class PersonOverviewController {
     private void showPersonDetails(Person person) {
 
 	    	if(null != person) {
-	    		firstNameLabel.setText(person.getFirstName());
-	    		lastNameLabel.setText(person.getLastName());
-	    	    postalAddressLabel.setText(person.getPostalAddress());
-	    	    phoneNumberLabel.setText(person.getPhoneNumber());
-	    	    emailLabel.setText(person.getEmail());
-	    	    ipAddressLabel.setText(person.getIpAddress());
-	    	    macAddressLabel.setText(person.getMacAddress());
+	    		firstNameLabel.setText(person.getPrivateData().getFirstName());
+	    		lastNameLabel.setText(person.getPrivateData().getLastName());
+	    	    postalAddressLabel.setText(person.getPrivateData().getPostalAddress());
+	    	    phoneNumberLabel.setText(person.getPrivateData().getPhoneNumber());
+	    	    emailLabel.setText(person.getPrivateData().getEmail());
+	    	    ipAddressLabel.setText(person.getPrivateData().getIpAddress());
+	    	    macAddressLabel.setText(person.getPrivateData().getMacAddress());
 	    	    
 	    	} /*else {
 	    		firstNameLabel.setText("");

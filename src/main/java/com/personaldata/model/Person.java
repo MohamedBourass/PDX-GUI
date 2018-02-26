@@ -7,72 +7,28 @@ package com.personaldata.model;
  */
 public class Person {
 	
-    private String firstName;
-    private String lastName;
-    
-    private String postalAddress;
-    private String phoneNumber;
-    private String email;
-    private String ipAddress;
-    private String macAddress;
+	private PrivateData privateData;
+	
+	private PublicData publicData;
     
     public Person() {
+    		privateData = new PrivateData();
+    		publicData = new PublicData();
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-	public String getPostalAddress() {
-		return postalAddress;
+	public PrivateData getPrivateData() {
+		return privateData;
 	}
 
-	public void setPostalAddress(String postalAddress) {
-		this.postalAddress = postalAddress;
+	public void setPrivateData(PrivateData privateData) {
+		this.privateData = privateData;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public PublicData getPublicData() {
+		return publicData;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPublicData(PublicData publicData) {
+		this.publicData = publicData;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getIpAddress() {
-		return ipAddress;
-	}
-
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
-	}
-
-	public String getMacAddress() {
-		return macAddress;
-	}
-
-	public void setMacAddress(String macAddress) {
-		this.macAddress = macAddress;
-	}
-
 }

@@ -121,13 +121,13 @@ public class PersonEditDialogController {
     public void setPerson(Person person) {
         this.person = person;
 
-        firstNameField.setText(person.getFirstName());
-        lastNameField.setText(person.getLastName());
-        postalAddressField.setText(person.getPostalAddress());
-        phoneNumberField.setText(person.getPhoneNumber());
-        emailField.setText(person.getEmail());
-        ipAddressField.setText(person.getIpAddress());
-        macAddressField.setText(person.getMacAddress());
+        firstNameField.setText(person.getPrivateData().getFirstName());
+        lastNameField.setText(person.getPrivateData().getLastName());
+        postalAddressField.setText(person.getPrivateData().getPostalAddress());
+        phoneNumberField.setText(person.getPrivateData().getPhoneNumber());
+        emailField.setText(person.getPrivateData().getEmail());
+        ipAddressField.setText(person.getPrivateData().getIpAddress());
+        macAddressField.setText(person.getPrivateData().getMacAddress());
 
 //        birthdayField.setText(CalendarUtil.format(person.getBirthday()));
 //        birthdayField.setPromptText("yyyy-mm-dd");
@@ -147,14 +147,14 @@ public class PersonEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
+            person.getPrivateData().setFirstName(firstNameField.getText());
+            person.getPrivateData().setLastName(lastNameField.getText());
 //            person.setBirthday(CalendarUtil.parse(birthdayField.getText()));
-            person.setPostalAddress(postalAddressField.getText());
-            person.setPhoneNumber(phoneNumberField.getText());
-            person.setEmail(emailField.getText());
-            person.setIpAddress(ipAddressField.getText());
-            person.setMacAddress(macAddressField.getText());
+            person.getPrivateData().setPostalAddress(postalAddressField.getText());
+            person.getPrivateData().setPhoneNumber(phoneNumberField.getText());
+            person.getPrivateData().setEmail(emailField.getText());
+            person.getPrivateData().setIpAddress(ipAddressField.getText());
+            person.getPrivateData().setMacAddress(macAddressField.getText());
 
             okClicked = true;
             
@@ -179,11 +179,6 @@ public class PersonEditDialogController {
             
             //dialogStage.close();
         }
-    }
-    
-    private void handleSave(Person person) {
-
-
     }
 
     /**
