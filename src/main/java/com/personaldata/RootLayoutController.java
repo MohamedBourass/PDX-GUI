@@ -179,6 +179,13 @@ public class RootLayoutController implements Initializable {
 		
 		TreeItem<String> publicData = new TreeItem<>("Public Data");
 		
+		TreeItem<String> mindset = new TreeItem<>("Mindset");
+		TreeItem<String> body = new TreeItem<>("Body");
+		TreeItem<String> scholar = new TreeItem<>("Scholar");
+		TreeItem<String> work = new TreeItem<>("Work");
+		publicData.getChildren().addAll(mindset, body, scholar, work);
+		publicData.setExpanded(true);
+		
 		root.getChildren().addAll(privateData, publicData);
 		treeview.setRoot(root);
 		treeview.getRoot().setExpanded(true);
